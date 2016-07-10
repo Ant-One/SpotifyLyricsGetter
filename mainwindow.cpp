@@ -21,9 +21,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::getCurrentSong()
 {
-    QString pathToScript(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/GetSpotifyCurrentSong.scpt");
+    QString appleScriptPath(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/GetSpotifyCurrentSong.scpt");
     QProcess osascript;
-    osascript.start("osascript", QStringList() << pathToScript);
+    osascript.start("osascript", QStringList() << appleScriptPath);
     osascript.waitForFinished();
     osascript.close();
+    QMessageBox::information(this, "info", "Spotify interrogé");
+
+    QString lyricsSearcherScriptPath(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/LyricsSearcher.py");
+    QString scrapySearcherCommand("/usr/local/bin/scrapy runspider ");
+    QString bashCommand = scrapyCommand + "\"" + lyricsSearcherScriptPath + "\"";
+    QMessageBox::information(this, "info", bashCommand);
+    QProcess scrapySearcher;
+    scrapySearcher.start("bash", QStringList() << "-c" << bashCommand);
+    scrapySearcher.waitForFinished();
+    scrapySearcher.close();
 }
