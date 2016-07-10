@@ -16,11 +16,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 public slots:
-    void getCurrentSong();
+    void getLyrics();
 
 private:
     Ui::MainWindow *ui;
-    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H
