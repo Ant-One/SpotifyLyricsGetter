@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::showAbout(){
-    QMessageBox::information(this, "À Propos", "Créé par Antoine Moix en 2016\nSources disponibles (github.com/Ant-One/SpotifyLyricsGetter/tree/OS-X)\nParoles de Musixmatch.com\nFait avec Qt5\nÎcone de \"design.google.com/icons\"\nCe programme est proposé sous les termes de la Unlicense (unlicense.org)");
+    QMessageBox::information(this, "À Propos", "Créé par Antoine Moix en 2016\nSources disponibles (github.com/Ant-One/SpotifyLyricsGetter/tree/OS-X)\nParoles de Musixmatch.com\nFait avec Qt5 (qt.io) et Scrapy(scrapy.org)\nÎcone de \"design.google.com/icons\"\nCe programme est proposé sous les termes de la Unlicense (unlicense.org)");
 }
 
 void MainWindow::getLyrics()
