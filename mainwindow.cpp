@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 #include <QTextStream>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
@@ -27,7 +28,7 @@ void MainWindow::getLyrics()
     osascript.waitForFinished();
     osascript.close();
 
-    QFile songInfo(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/CurrentSong.txt");;
+    QFile songInfo(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/CurrentSong.txt");
     if (!songInfo.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         ui->label->setText("Pas de chanson en cours d'écoute");
@@ -35,6 +36,7 @@ void MainWindow::getLyrics()
     }
     QTextStream inSongInfo(&songInfo);
     QString lineSongInfo;
+    inSongInfo.setCodec("UTF-8");
     lineSongInfo = inSongInfo.readLine().replace("|", " - ");
     ui->label->setText(lineSongInfo);
     songInfo.close();
@@ -55,7 +57,7 @@ void MainWindow::getLyrics()
     scrapyGetter.waitForFinished();
     scrapyGetter.close();
 
-    QFile lyrics(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/Lyrics.txt");;
+    QFile lyrics(QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[0] + "/Lyrics.txt");
     if (!lyrics.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         ui->textBrowser->setText("Pas de paroles trouvées");

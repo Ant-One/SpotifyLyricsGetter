@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QDir>
 #include <QFileInfo>
+#include <QTextCodec>
 
 void initializeScripts()
 {
@@ -14,7 +15,10 @@ void initializeScripts()
             "set currentlyPlayingTrack to getCurrentlyPlayingTrack()\n"
             "set UnixPath to POSIX path of ((path to me as text) & \"::\")\n"
             "set HFSPath to POSIX file UnixPath\n"
-            "writeToFile(currentlyPlayingTrack, HFSPath & \"CurrentSong.txt\", false)\n\n"
+            "writeToFile(currentlyPlayingTrack, HFSPath & \"CurrentSongMacRoman.txt\", false)\n"
+            "set MacRomanPath to (UnixPath & \"CurrentSongMacRoman.txt\")\n"
+            "set UTFPath to (UnixPath & \"CurrentSong.txt\")\n"
+            "do shell script \"iconv -f MAC -t UTF8 \" & (quoted form of MacRomanPath) & \" > \" & (quoted form of UTFPath)\n\n"
             "-- Method to get the currently playing track\n"
             "on getCurrentlyPlayingTrack()\n"
             "	tell application \"Spotify\"\n"
@@ -46,11 +50,16 @@ void initializeScripts()
             "import scrapy\n"
             "from scrapy.http import Request\n"
             "from HTMLParser import HTMLParser\n"
-            "import os.path\n"
-
+            "import os\n"
             "class SearchSpider(scrapy.Spider):\n"
             "    name = \"lyrics\"\n"
             "    allowed_domains = ['musixmatch.com']\n"
+            "    try:\n"
+            "        os.remove(os.path.join(os.path.dirname(__file__),\"..\") + \"/Spotify Lyrics Getter/LyricsURL.txt\")\n"
+            "    except IOError, e:\n"
+            "        print ('Error: %s - %s.' % (e.filename,e.strerror))\n"
+            "    except OSError, i:\n"
+            "        print ('Error: %s - %s.' % (i.filename,i.strerror))\n"
             "    file_song = open(os.path.abspath(os.path.join(os.path.dirname(__file__),\"..\")) + \"/Spotify Lyrics Getter/CurrentSong.txt\", \"r\")\n"
             "    info = file_song.read()\n"
             "    file_song.close()\n"
@@ -77,10 +86,16 @@ void initializeScripts()
             "import scrapy\n"
             "from scrapy.http import Request\n"
             "from HTMLParser import HTMLParser\n"
-            "import os.path\n"
+            "import os\n"
             "class LyricsSpider(scrapy.Spider):\n"
             "    name = \"lyrics\"\n"
             "    allowed_domains = ['musixmatch.com']\n"
+            "    try:\n"
+            "        os.remove(os.path.join(os.path.dirname(__file__),\"..\") + \"/Spotify Lyrics Getter/Lyrics.txt\")\n"
+            "    except IOError, e:\n"
+            "        print ('Error: %s - %s.' % (e.filename,e.strerror))\n"
+            "    except OSError, i:\n"
+            "        print ('Error: %s - %s.' % (i.filename,i.strerror))\n"
             "    file_song = open(os.path.abspath(os.path.join(os.path.dirname(__file__),\"..\")) + \"/Spotify Lyrics Getter/LyricsURL.txt\", \"r\")\n"
             "    url = file_song.read()\n"
             "    file_song.close()\n"
