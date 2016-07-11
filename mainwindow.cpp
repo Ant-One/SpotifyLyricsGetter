@@ -13,11 +13,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(getLyrics()));
+    connect(ui->toolButton, SIGNAL(clicked()), this, SLOT(showAbout()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::showAbout(){
+    QMessageBox::information(this, "À Propos", "Créé par Antoine Moix en 2016\nSources disponibles (github.com/Ant-One/SpotifyLyricsGetter/tree/OS-X)\nParoles de Musixmatch.com\nFait avec Qt5\nÎcone de \"design.google.com/icons\"\nCe programme est proposé sous les termes de la Unlicense (unlicense.org)");
 }
 
 void MainWindow::getLyrics()

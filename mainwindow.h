@@ -17,6 +17,7 @@ public:
     ~MainWindow();
 public slots:
     void getLyrics();
+    void showAbout();
 
 private:
     Ui::MainWindow *ui;
