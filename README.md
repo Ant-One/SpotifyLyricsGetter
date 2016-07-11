@@ -3,6 +3,7 @@ Small application (only OSX compatible for now) who get current Spotify song lyr
 
 It is only in French for now (English coming soon)
 It is proposed under the [Unlicense terms](unlicense.org)
+The icon comes from [Google Design](design.google.com/icons)
 
 It uses a applescript to get Spotify current track and two pythons scripts with scrapy to get the lyrics. The scripts are created on the first launch and stored in /Library/Application Support/Spotify Lyrics Getter
 
