@@ -9,9 +9,9 @@ The icon comes from [Google Design](https://design.google.com/icons)
 
 It uses a applescript to get Spotify current track and two pythons scripts with scrapy to get the lyrics. The scripts are created on the first launch and stored in /Library/Application Support/Spotify Lyrics Getter
 
-OSX pre-build bundle with Qt framework available [here](http://ant-one.ch/files/spotifylyricsgetter.zip) 
+OSX pre-build bundle with Qt framework is available [here](http://ant-one.ch/files/spotifylyricsgetter.zip). You will still need [Python 2.7](http://python.org) and [Scrapy](http://scrapy.org) installed on your system.
 
-It uses and needs :
+It needs :
 * [Qt5](http://qt.io)
 * [Python 2.7](http://python.org) and [Scrapy](http://scrapy.org)
 
