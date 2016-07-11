@@ -67,7 +67,12 @@ void MainWindow::getLyrics()
     QString lineLyrics;
     while (!inLyrics.atEnd()) {
         lineLyrics += inLyrics.readLine().append("\n");
-        ui->textBrowser->setText(lineLyrics);
     }
+    ui->textBrowser->setText(lineLyrics);
+    if (lyrics.pos() == 0){
+        ui->textBrowser->setText("Pas de paroles trouvées");
+        return;
+    }
+
     lyrics.close();
 }
