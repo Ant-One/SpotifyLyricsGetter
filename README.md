@@ -12,7 +12,7 @@ It uses a applescript to get Spotify current track and two pythons scripts with 
 OSX pre-build bundle with Qt framework avalible [here](http://ant-one.ch/files/spotifylyricsgetter.zip) 
 
 It uses and needs :
-* (Qt5)[http://qt.io)
+* (Qt5)[http://qt.io]
 * Python 2.7 and [Scrapy](http://scrapy.org)
 
 to be build
