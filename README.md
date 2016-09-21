@@ -15,4 +15,4 @@ It needs :
 * [Qt5](http://qt.io)
 * [Python 2.7](http://python.org) and [Scrapy](http://scrapy.org)
 
-to be build
+to be used
