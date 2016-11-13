@@ -1,5 +1,5 @@
 # SpotifyLyricsGetter
-Small application (only OSX compatible for now) who get current Spotify song lyrics from Musixmatch.com
+Small application (only OSX compatible for now) that get current Spotify song lyrics from Musixmatch.com
 
 It is only in French for now (English coming soon)
 It is proposed under the [Unlicense terms](http://unlicense.org)
